@@ -3,20 +3,19 @@
 import {formatToNumber} from "./format";
 
 export function collectionToArray(htmlCollection) {
-    const arr = [];
-    for (let i = 0, length = htmlCollection.length; i < length; i++) {
-        const object = {};
-        const attribute = htmlCollection[i].attributes;
-        object.position = attribute[0].value;
+    const htmlElements = [...htmlCollection];
+    const array = [];
 
-        object.salaryStr = attribute[1].value;
-        const salaryStr = object.salaryStr.substring(1);
-        object.salary = formatToNumber(salaryStr, ',');
+    htmlElements.forEach((value) => {
+        const salaryStr = value.dataset.salary;
+        array.push({
+            position: value.dataset.position,
+            salaryStr,
+            salary: formatToNumber(salaryStr.substring(1), ','),
+            age: value.dataset.age,
+            name: value.innerText,
+        })
+    });
 
-        object.age = attribute[2].value;
-        object.name = htmlCollection[i].innerText;
-
-        arr.push(object);
-    }
-    return arr;
+    return array;
 }
