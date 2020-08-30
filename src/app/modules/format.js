@@ -1,6 +1,6 @@
 /*eslint-disable */
 export function formatToNumber(str, separator = '') {
-    const arr = str.split(separator);
-    const result = arr.reduce((prev, curr) => prev += curr, '');
+    const result = str.replaceAll(separator, '');
+    console.log(result);
     return +result;
 }
