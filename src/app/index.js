@@ -30,12 +30,6 @@ const average = population / populationNumbers.length;
 totalPopulationElem.innerText = strDecorator(population);
 averageElement.innerText = strDecorator(average);
 
-/*for (let key in honorDesk) {
-    if (honorDesk.hasOwnProperty(key)) {
-        honorDesk[key].innerText = topWorker[key];
-    }
-}*/
-
 for (let key of Object.keys(honorDesk)) {
     honorDesk[key].innerText = topWorker[key];
 }
